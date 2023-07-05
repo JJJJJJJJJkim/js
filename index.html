@@ -8,15 +8,20 @@
 <body>
     <div class="alert-box" id="alert">
         <p id="zz">알림창임</p>
-        <button onclick="openAlert('none')">닫기</button>
+        <button id="close">닫기</button>
     </div>
-    <button onclick="openAlert('block', '아이디를 입력하세요')">버튼1</button>
-    <button onclick="openAlert('block', '비밀번호를 입력하세요')">버튼2</button>
+    <button onclick="openAlert('아이디를 입력하세요')">버튼1</button>
+    <button onclick="openAlert('비밀번호를 입력하세요')">버튼2</button>
 
     <script>
 
-        function openAlert(구멍, 이건뭘까) {
-            document.getElementById('alert').style.display = 구멍;
+        document.getElementById('close').addEventListener('click', function() {
+            document.getElementById('alert').style.display = 'none';
+        })
+
+
+        function openAlert(이건뭘까) {
+            document.getElementById('alert').style.display = 'block';
             document.getElementById('zz').innerHTML = 이건뭘까;
         }
     
