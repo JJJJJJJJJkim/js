@@ -8,6 +8,16 @@
     <link href="main.css" rel="stylesheet">
   </head>
   <body>
+
+
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <button class="btn btn-danger" id="close">닫기</button>
+      </div>
+    </div> 
+
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Navbar</span>
@@ -26,12 +36,6 @@
         <li class="list-group-item">And a fifth one</li>
       </ul>
 
-      <div class="black-bg">
-        <div class="white-bg">
-          <h4>로그인하세요</h4>
-          <button class="btn btn-danger" id="close">닫기</button>
-        </div>
-      </div> 
 
 
 
@@ -39,17 +43,16 @@
 
       <script>
         
-        document.querySelector('.black-bg').style.display = 'none';
         document.querySelector('#loginButton').addEventListener('click', function(){
-          document.querySelector('.black-bg').style.display = 'block';
+          document.querySelector('.black-bg').classList.add('showModal');
         })
         document.querySelector('#close').addEventListener('click', function(){
-          document.querySelector('.black-bg').style.display = 'none';
+          document.querySelector('.black-bg').classList.remove('showModal');
         })
 
         document.querySelector('.navbar-toggler')
         .addEventListener('click', function(){
-            document.querySelectorAll('.list-group')[0].classList.toggle('show')
+            document.querySelectorAll('.list-group')[0].classList.toggle('show');
         })
 
       </script>
