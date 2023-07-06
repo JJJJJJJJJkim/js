@@ -13,12 +13,23 @@
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
-        <button class="btn btn-danger" id="close">닫기</button>
+        <form action="success.html" id="what">
+          <div class="my-3">
+            <input type="text" class="form-control" id="email">
+           </div>
+           <div class="my-3">
+             <input type="password" class="form-control">
+           </div>
+           <button type="submit" class="btn btn-primary" id="send">전송</button>
+           <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form> 
       </div>
     </div> 
 
 
     
+
+
 
 
     <nav class="navbar navbar-light bg-light">
@@ -40,12 +51,22 @@
       </ul>
 
 
+      <div class="mainBg">
+        <h4>Shirts on sail</h4>
+        <button id="loginButton" class="btn btn-danger">로그인</button>
+      </div>
 
 
-      <button id="loginButton">로그인</button>
+
 
       <script>
-        
+         document.querySelector('#what').addEventListener('submit', function(e){
+          if(document.querySelector('#email').value === '' ){
+            alert('입력해줘요');
+            e.preventDefault();
+          }
+        });
+
         document.querySelector('#loginButton').addEventListener('click', function(){
           document.querySelector('.black-bg').classList.add('showModal');
         })
@@ -57,6 +78,7 @@
         .addEventListener('click', function(){
             document.querySelectorAll('.list-group')[0].classList.toggle('show');
         })
+      
 
       </script>
 
