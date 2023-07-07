@@ -36,4 +36,6 @@
     padding: 100px 20px;
     background-color: rgb(183, 90, 229);
 }
-
+.hidehide {
+    display: none;
+}

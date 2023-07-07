@@ -10,25 +10,6 @@
   <body>
 
 
-    <p>태조 이성계가 태어난 년도는?</p>
-<input type="text" id="answer">
-<button id="send-answer">제출</button>
-
-<script>
-  var i = 0;
-    document.querySelector('#send-answer').addEventListener('click', function(){
-      i ++;
-      var userAsr = document.querySelector('#answer').value
-      if(userAsr === '1335') {
-        alert('정답입니다');
-      }
-      if(i >= 3 && userAsr !== '1335') {
-        alert('멍청이!');
-      }
-    })
-    
-</script>
-
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -46,11 +27,10 @@
     </div> 
 
 
-
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Vinho</span>
-          <span class="badge bg-dark ">Dark 🔄</span>
+          <span class="badge bg-dark">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -71,11 +51,25 @@
         <h4>Shirts on sail</h4>
         <button id="loginButton" class="btn btn-danger">로그인</button>
       </div>
+
+      <div class="alert alert-danger">
+        <span id="time">5</span>초 이내 구매시 사은품 증정!
+      </div>
       
       
       
       
       <script>
+        var sum = 5;
+        setTimeout(function() {
+          document.querySelector('.alert').style.display = 'none';
+        }, 5000)
+        setInterval(function(){
+          sum = sum - 1;
+          if(sum >= 0) {
+          document.getElementById('time').innerHTML = sum;
+          }
+        }, 1000)
         
 
 
