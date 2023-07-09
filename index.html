@@ -75,14 +75,24 @@
 
 
          document.querySelector('#loginForm').addEventListener('submit', function(e){
-          if(document.querySelector('#email').value === '' ){
-            alert('email 을 입력하세요.');
-            e.preventDefault();
-          } else if(document.querySelector('#password').value === '') {
+           let inputId = document.querySelector('#email').value;
+           let inputPw = document.querySelector('#password').value;
+          if(inputId === '' ){
+           alert('email 을 입력하세요.');
+           e.preventDefault();
+          } else if(inputPw === '') {
             alert('비밀번호를 입력하세요.');
             e.preventDefault();
-          } else if(document.querySelector('#password').value.length < 6 ){
+          } else if(inputPw.length < 6 ){
             alert('비밀번호가 6자 미만입니다.');
+            e.preventDefault();
+          }
+          if( /\S+@\S+\.\S+/.test(inputId) === false ) {
+             alert('이메일 형식이 아닙니다.');
+             e.preventDefault();
+          }
+          if( /[A-Z]/.test(inputPw) === false) {
+            alert('비밀번호에 대문자가 없습니다');
             e.preventDefault();
           }
         });
