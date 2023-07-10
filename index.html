@@ -70,14 +70,15 @@
           </div>
         </div>
       </div>
+      <div style="float: left; margin-right: 5px;" id="carousel">
+        <button class="slide-1">1</button>
+        <button class="slide-2">2</button>
+        <button class="slide-3">3</button>
+      </div>
       
-      <button class="slide-1">1</button>
-      <button class="slide-2">2</button>
-      <button class="slide-3">3</button>
-      
-      <button class="before">이전</button>
-      <button class="next">다음</button>
-      
+        <button class="before">이전</button>
+        <button class="next">다음</button>
+
       <script>
 
         
@@ -152,23 +153,26 @@
         const slide1 = document.querySelector('.slide-1');
         const slide2 = document.querySelector('.slide-2');
         const slide3 = document.querySelector('.slide-3');
+
         const nexto = document.querySelector('.next');
         const beforeto = document.querySelector('.before');
 
         let crtPic = 1;
+        
+        const carouselNb = carousel.childElementCount;
+        
 
         nexto.addEventListener('click', function(){
-          if(crtPic === 1) {
-            slideCnt.style.transform = 'translateX(-100vw)';
-            crtPic = 2;
-          }else if(crtPic === 2) {
-            slideCnt.style.transform = 'translateX(-200vw)';
-            crtPic = 3;
-          }else if(crtPic === 3) {
-            slideCnt.style.transform = 'translateX(0vw)';
+          if(crtPic === carouselNb) {
             crtPic = 1;
+            slideCnt.style.transform = `translateX(-${crtPic-1}00vw)`;
+          }else {
+            slideCnt.style.transform = `translateX(-${crtPic}00vw)`;
+            crtPic ++;
           }
         })
+
+      
 
         beforeto.addEventListener('click', function(){
           if(crtPic === 1) {
