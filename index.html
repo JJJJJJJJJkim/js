@@ -29,13 +29,23 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand">Vinho</span>
+          <span class="navbarBrand">Vinho</span>
           <span class="badge bg-dark" style="position: absolute; right: 100px;">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-      </nav> 
+    </nav> 
+
+    <script>
+      window.addEventListener('scroll', function(){
+        if ( window.scrollY < 100 ) {
+          document.querySelector('.navbarBrand').style.fontSize = '30px';
+        } else {
+          document.querySelector('.navbarBrand').style.fontSize = '20px';
+        }
+      });
+    </script>
 
 
       <ul class="list-group">
@@ -51,6 +61,11 @@
         <h4>Shirts on sail</h4>
         <button id="loginButton" class="btn btn-danger">로그인</button>
       </div>
+
+      <div class="Lorem" style="width: 200px; height: 100px; overflow-y: scroll;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem minima ullam tempora possimus dolor, in aliquam iste quas? Odio autem cupiditate, neque maiores animi adipisci dolorum atque enim reiciendis beatae!</div>
+
+      
+
 
       <div class="alert alert-danger">
         <span id="time">5</span>초 이내 구매시 사은품 증정!
@@ -78,6 +93,11 @@
       
         <button class="before">이전</button>
         <button class="next">다음</button>
+
+
+
+      <div style="height: 1000px;"></div>
+
 
       <script>
 
@@ -141,11 +161,8 @@
           count = count + 1; 
           if((count % 2) === 1){
             document.querySelector('.bg-dark').innerText = 'Light 🔄';
-            console.log(count);
           } else {
             document.querySelector('.badge').innerText = 'Dark 🔄';
-
-            console.log(count);
           }
         })
         
@@ -173,6 +190,12 @@
         })
 
       
+       
+
+
+
+
+
 
         beforeto.addEventListener('click', function(){
           if(crtPic === 1) {
@@ -206,8 +229,24 @@
         })
 
 
-      </script>
+        window.onload = function(){
+          const lorem = document.querySelector('.Lorem');
+          lorem.addEventListener('scroll', function(){
+          console.log()
+          var 스크롤양 = document.querySelector('.Lorem').scrollTop;
+          var 실제높이 = document.querySelector('.Lorem').scrollHeight;
+          var 높이 = document.querySelector('.Lorem').clientHeight;
 
+          if ( 스크롤양 + 높이  === 실제높이  ) {
+            alert("다 읽으셨군요");
+          }
+
+
+          })
+          }
+        
+      </script>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
