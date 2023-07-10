@@ -39,3 +39,19 @@
 .hidehide {
     display: none;
 }
+.slide-container {
+    width: 300vw;
+    transition: all 1s;
+    height: 300px;
+}
+.slide {
+    width: 100vw;
+    float: left;
+    height: 100%;
+}
+.slide img {
+    width: 100%;
+}
+.sliding {
+    transform: translateX(-100vw);
+}

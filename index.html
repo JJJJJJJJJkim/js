@@ -30,7 +30,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Vinho</span>
-          <span class="badge bg-dark">Dark 🔄</span>
+          <span class="badge bg-dark" style="position: absolute; right: 100px;">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,11 +55,35 @@
       <div class="alert alert-danger">
         <span id="time">5</span>초 이내 구매시 사은품 증정!
       </div>
+
+
+      <div style="overflow: hidden;">
+        <div class="slide-container">
+          <div class="slide">
+            <img src="bell-peppers-gbcf00fad5_1280.jpg">
+          </div>
+          <div class="slide">
+            <img src="champagner-gf172b3070_1280.jpg">
+          </div>
+          <div class="slide">
+            <img src="top-view-g4d7f92311_1280.jpg"> 
+          </div>
+        </div>
+      </div>
       
+      <button class="slide-1">1</button>
+      <button class="slide-2">2</button>
+      <button class="slide-3">3</button>
       
-      
+      <button class="before">이전</button>
+      <button class="next">다음</button>
       
       <script>
+
+        
+
+
+
         var sum = 5;
         setTimeout(function() {
           document.querySelector('.alert').style.display = 'none';
@@ -124,8 +148,59 @@
           }
         })
         
+        const slideCnt = document.querySelector('.slide-container');
+        const slide1 = document.querySelector('.slide-1');
+        const slide2 = document.querySelector('.slide-2');
+        const slide3 = document.querySelector('.slide-3');
+        const nexto = document.querySelector('.next');
+        const beforeto = document.querySelector('.before');
+
+        let crtPic = 1;
+
+        nexto.addEventListener('click', function(){
+          if(crtPic === 1) {
+            slideCnt.style.transform = 'translateX(-100vw)';
+            crtPic = 2;
+          }else if(crtPic === 2) {
+            slideCnt.style.transform = 'translateX(-200vw)';
+            crtPic = 3;
+          }else if(crtPic === 3) {
+            slideCnt.style.transform = 'translateX(0vw)';
+            crtPic = 1;
+          }
+        })
+
+        beforeto.addEventListener('click', function(){
+          if(crtPic === 1) {
+            slideCnt.style.transform = 'translateX(-200vw)';
+            crtPic = 3;
+          }else if(crtPic === 2) {
+            slideCnt.style.transform = 'translateX(0vw)';
+            crtPic = 1;
+          }else if(crtPic === 3) {
+            slideCnt.style.transform = 'translateX(-100vw)';
+            crtPic = 2;
+          }
+        })
         
-      
+
+
+
+        slide1.addEventListener('click', function(){
+          slideCnt.style.transform = 'translateX(0vw)';
+          crtPic = 1;
+        })
+
+        slide2.addEventListener('click', function(){
+          slideCnt.style.transform = 'translateX(-100vw)';
+          crtPic = 2;
+        })
+         
+        slide3.addEventListener('click', function(){
+          slideCnt.style.transform = 'translateX(-200vw)';
+          crtPic = 3;
+        })
+
 
       </script>
 
