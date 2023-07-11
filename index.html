@@ -35,16 +35,20 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
+        <div class="scrBl"></div>
     </nav> 
 
+
+
     <script>
+      //nav 스크롤 상태바
       window.addEventListener('scroll', function(){
-        if ( window.scrollY < 100 ) {
-          document.querySelector('.navbarBrand').style.fontSize = '30px';
-        } else {
-          document.querySelector('.navbarBrand').style.fontSize = '20px';
-        }
+        let 스크롤진척도 = document.querySelector('html').scrollTop / ( document.querySelector('html').scrollHeight - document.querySelector('html').clientHeight );
+        console.log(스크롤진척도);
+        document.querySelector('.scrBl').style.width = `${스크롤진척도*100}%`;
       });
+
+
     </script>
 
 
@@ -240,9 +244,7 @@
           if ( 스크롤양 + 높이  === 실제높이  ) {
             alert("다 읽으셨군요");
           }
-
-
-          })
+          });
           }
         
       </script>
