@@ -1,14 +1,28 @@
-for(let i = 0; i < 3; i ++){
-    const bt = document.querySelectorAll('.tab-button');
-    const tc = document.querySelectorAll('.tab-content');
-    bt[i].addEventListener('click', function(){
-        bt[0].classList.remove('orange');
-        bt[1].classList.remove('orange');
-        bt[2].classList.remove('orange');
-        bt[i].classList.add('orange');
-        tc[0].classList.remove('show');
-        tc[1].classList.remove('show');
-        tc[2].classList.remove('show');
-        tc[i].classList.add('show');
-    });
+
+
+
+const bt = document.querySelectorAll('.tab-button');
+const tc = document.querySelectorAll('.tab-content');
+
+
+function openTab (index){
+    for(let i = 0; i < 3; i++) {
+        bt[i].classList.remove('orange');
+    }
+    bt[index].classList.add('orange');
+    for(let i = 0; i < 3; i++) {
+        tc[i].classList.remove('show');
+    }
+    tc[index].classList.add('show');
 }
+document.querySelector('.list').addEventListener('click', function(e){
+    openTab(parseInt(e.target.dataset.id));
+})
+
+// for(let i = 0; i < 3; i ++){
+    
+    
+//     bt[i].addEventListener('click', function(){
+//         openTab(i)
+//     });
+// }
