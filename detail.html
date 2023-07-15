@@ -21,6 +21,7 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option>셔츠</option>
+      <option>바지</option>
     </select>
     <select class="form-select mt-2 form-hide">
       <option>95</option>
@@ -28,16 +29,38 @@
     </select>
   </form>
 
+
+
+
   <script>
+
+
+    
+
+
     function shirt () {
+      var sel = `<select class="form-select mt-2 form-hide">
+      <option>28</option>
+      <option>30</option>
+      </select>`;
       const val = document.querySelector('.form-select').value;
-      const slt = document.querySelectorAll('.form-select')[1];
+      document.querySelectorAll('.form-group')[0].insertAdjacentHTML('beforeend', sel);
+      const slt1 = document.querySelectorAll('.form-select')[1];
+      const slt2 = document.querySelectorAll('.form-select')[2];
       if (val === '셔츠') {
-        slt.classList.remove('form-hide');
+        slt1.classList.remove('form-hide');
       } else {
-        slt.classList.add('form-hide');
+        slt1.classList.add('form-hide');
+      }
+      if (val === '바지') {
+        slt2.classList.remove('form-hide');
+      } else {
+        slt2.classList.add('form-hide');
       }
     }
+
+
+
     
     document.querySelector('.form-group').addEventListener('input',
     function(){
