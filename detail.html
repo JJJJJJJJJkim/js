@@ -23,10 +23,6 @@
       <option>셔츠</option>
       <option>바지</option>
     </select>
-    <select class="form-select mt-2 form-hide">
-      <option>95</option>
-      <option>100</option>
-    </select>
   </form>
 
 
@@ -34,28 +30,40 @@
 
   <script>
 
+    
+    var shSlt = `<select class="form-select mt-2 form-hide" id="shirtSlt"></select>`;
+    var ptSlt = `<select class="form-select mt-2 form-hide" id="pantsSlt"></select>`;
 
     
 
+    document.querySelectorAll('.form-group')[0].insertAdjacentHTML('beforeend', shSlt);
+    document.querySelectorAll('.form-group')[0].insertAdjacentHTML('beforeend', ptSlt);
+
+    const sltS = document.querySelector('#shirtSlt');
+    const sltP = document.querySelector('#pantsSlt');
+
+    var pants = [28, 30, 32, 34];
+    var shirts = [95, 100, 105];
+
+    shirts.forEach(function(size){
+    sltS.insertAdjacentHTML('beforeend', `<option>${size}</option>`)
+    });
+    pants.forEach(function(size){
+    sltP.insertAdjacentHTML('beforeend', `<option>${size}</option>`)
+    });
+
 
     function shirt () {
-      var sel = `<select class="form-select mt-2 form-hide">
-      <option>28</option>
-      <option>30</option>
-      </select>`;
       const val = document.querySelector('.form-select').value;
-      document.querySelectorAll('.form-group')[0].insertAdjacentHTML('beforeend', sel);
-      const slt1 = document.querySelectorAll('.form-select')[1];
-      const slt2 = document.querySelectorAll('.form-select')[2];
       if (val === '셔츠') {
-        slt1.classList.remove('form-hide');
+        sltS.classList.remove('form-hide');
       } else {
-        slt1.classList.add('form-hide');
+        sltS.classList.add('form-hide');
       }
       if (val === '바지') {
-        slt2.classList.remove('form-hide');
+        sltP.classList.remove('form-hide');
       } else {
-        slt2.classList.add('form-hide');
+        sltP.classList.add('form-hide');
       }
     }
 
