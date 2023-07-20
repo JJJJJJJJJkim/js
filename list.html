@@ -9,48 +9,106 @@
   </head>
   <body>
 
+    <div class="container">
+      <div class="row">
+    
+          
+    
+       </div>
+    </div> 
+    
 
-    <div class="card-group container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p>가격 : <span class="card-price">70000</span></p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p>가격 : <span class="card-price">70000</span></p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p>가격 : <span class="card-price">70000</span></p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-      </div>
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+
+    <!-- <div class="container">
+      <button class="btn btn-danger" id="sort">정렬!!!</button>
+    </div> -->
       
       <script>
+        
+        
+        // document.querySelector('#sort').addEventListener('click', function() {
+        //   products.sort((a,b) => a.price - b.price);
+
+        // })
+
+
+
+        let cnt = 0;
+        document.querySelector('#more').addEventListener('click', function() {
+          
+          cnt ++;
+          
+          for (let k = 1; k < 3; k++){
+            if(cnt === k) {
+            fetch(`https://codingapple1.github.io/js/more${k}.json`)
+              .then(res => res.json())
+              .then(function(data){
+                data.forEach((a, i) => {
+                  document.querySelector('.row').insertAdjacentHTML('beforeend', 
+                    `<div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5>${data[i].title}</h5>
+                    <p>가격 : ${data[i].price}</p>
+                    </div>`);
+                })
+              })
+            .catch(function(error){
+              console.log('실패함')
+              });
+            }
+          }
+
+             
+            
+          if(cnt === 2) {
+            document.querySelector('#more').classList.add('hidehide');
+          }
+        });
+        
+        
+
+        // document.querySelector('#more').addEventListener('click', function() {
+        //   fetch('https://codingapple1.github.io/js/more2.json')
+        //   .then(res => res.json())
+        //   .then(function(data){
+        //     console.log(data)
+        //     data.forEach((a, i) => {
+        //     document.querySelector('.row').insertAdjacentHTML('beforeend', 
+        //     `<div class="col-sm-4">
+        //     <img src="https://via.placeholder.com/600" class="w-100">
+        //     <h5>${data[i].title}</h5>
+        //     <p>가격 : ${data[i].price}</p>
+        //     </div>`);
+        // });
+        //   })
+        //   .catch(function(error){
+        //     console.log('실패함')
+        //   });
+        // });
+        
+
+
+
+
+
         var products = [
           { id : 0, price : 70000, title : 'Blossom Dress' },
           { id : 1, price : 50000, title : 'Springfield Shirt' },
           { id : 2, price : 60000, title : 'Black Monastery' }
         ];
 
-        for ( i = 0; i < 3; i ++ ) {
-            document.querySelectorAll('.card-title')[i].innerHTML = products[i].title;
-        }
-        
-        for ( i = 0; i < 3; i ++ ) {
-            document.querySelectorAll('.card-price')[i].innerHTML = products[i].price;
-        }
+        products.forEach((a, i) => {
+          document.querySelector('.row').insertAdjacentHTML('beforeend', 
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${products[i].title}</h5>
+            <p>가격 : ${products[i].price}</p>
+          </div>`);
+        });
 
       </script> 
 
