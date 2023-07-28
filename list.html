@@ -18,22 +18,71 @@
     </div> 
     
 
-    <div class="container">
+    <div class="container my-3">
       <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
 
-    <!-- <div class="container">
+    <div class="container my-3">
       <button class="btn btn-danger" id="sort">정렬!!!</button>
-    </div> -->
+    </div>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="nameSort">이름정렬!!!</button>
+    </div>
       
+    <div class="container my-3">
+      <button class="btn btn-danger" id="priceUnder">60000이하!!!</button>
+    </div>
       <script>
         
-        
-        // document.querySelector('#sort').addEventListener('click', function() {
-        //   products.sort((a,b) => a.price - b.price);
+        document.querySelector('#nameSort').addEventListener('click', function() {
+          products.sort((a,b) => a.title > b.title ? -1 : 1);
+          document.querySelector('.row').replaceChildren();
+          products.forEach((a, i) => {
+          document.querySelector('.row').insertAdjacentHTML('beforeend', 
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${products[i].title}</h5>
+            <p>가격 : ${products[i].price}</p>
+          </div>`);
+          });
 
-        // })
+        })
+
+
+        document.querySelector('#priceUnder').addEventListener('click', function() {
+          var newProducts = products.filter(function(a) {
+            return a.price <= 60000;
+          })
+          document.querySelector('.row').replaceChildren();
+          newProducts.forEach((a, i) => {
+          document.querySelector('.row').insertAdjacentHTML('beforeend', 
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+          </div>`);
+          });
+
+        })
+
+
+
+        
+        document.querySelector('#sort').addEventListener('click', function() {
+          products.sort((a,b) => a.price - b.price);
+          document.querySelector('.row').replaceChildren();
+          products.forEach((a, i) => {
+          document.querySelector('.row').insertAdjacentHTML('beforeend', 
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${products[i].title}</h5>
+            <p>가격 : ${products[i].price}</p>
+          </div>`);
+          });
+
+        })
 
 
 
@@ -107,8 +156,43 @@
             <img src="https://via.placeholder.com/600" class="w-100">
             <h5>${products[i].title}</h5>
             <p>가격 : ${products[i].price}</p>
+            <button class="buy">구매</button>
           </div>`);
         });
+        
+        const buy1 = document.querySelectorAll('.buy')[0];
+        const buy2 = document.querySelectorAll('.buy')[1];
+        const buy3 = document.querySelectorAll('.buy')[2];
+
+        const buy1Name = buy1.previousElementSibling.previousElementSibling.innerHTML;
+        const buy2Name = buy2.previousElementSibling.previousElementSibling.innerHTML;
+        const buy3Name = buy3.previousElementSibling.previousElementSibling.innerHTML;
+        
+        let cartArray = [];
+        
+        buy1.addEventListener('click', function(){
+          if(cartArray.indexOf(buy1Name)<0){
+            cartArray.push(buy1Name);
+            let newCartArray = JSON.stringify(cartArray)
+            localStorage.setItem('cart', newCartArray)
+          }
+        });
+        buy2.addEventListener('click', function(){
+          if(cartArray.indexOf(buy2Name)<0){
+            cartArray.push(buy2Name);
+            let newCartArray = JSON.stringify(cartArray)
+            localStorage.setItem('cart', newCartArray)
+          }
+        });
+        buy3.addEventListener('click', function(){
+          if(cartArray.indexOf(buy3Name)<0){
+            cartArray.push(buy3Name);
+            let newCartArray = JSON.stringify(cartArray)
+            localStorage.setItem('cart', newCartArray)
+          }
+        });
+
+        
 
       </script> 
 

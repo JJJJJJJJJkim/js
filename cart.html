@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="cart">
+
+    </div>
+
+
+
+
+    <script>
+        let get = localStorage.getItem('cart');
+        get = JSON.parse(get);
+        get.foreach((a, i) =>{
+            document.querySelector('.cart').insertAdjacentHTML('beforeend',
+            `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${get[i]}</h5>
+            <button class="buy">구매</button>
+            </div>`
+            )
+        })
+
+        
+    </script>
+
+
+</body>
+</html>
